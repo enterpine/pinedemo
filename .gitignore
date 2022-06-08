@@ -1,0 +1,4 @@
+# 项目排除路径
+/datasource/target/
+/flink15/target/
+/target/
