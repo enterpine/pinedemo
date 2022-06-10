@@ -68,6 +68,14 @@ public class ExampleEventLogEntity {
 
     @Override
     public String toString() {
-        return super.toString();
+        String seprator = "\001";
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder
+                .append(this.dims1).append(seprator)
+                .append(this.dims2).append(seprator)
+                .append(this.dims3).append(seprator)
+                .append(this.target1).append(seprator)
+                .append(this.eventTime);
+        return stringBuilder.toString();
     }
 }
