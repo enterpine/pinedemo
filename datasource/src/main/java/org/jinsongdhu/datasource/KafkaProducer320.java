@@ -11,7 +11,7 @@ import java.util.Random;
 
 public class KafkaProducer320 {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception{
 
         //topic
         String topic_name = "topic_test";
@@ -24,12 +24,12 @@ public class KafkaProducer320 {
         Producer producer = new KafkaProducer(properties);
 
         //messages
-        int msg_nums = 10;
+        int msg_nums = 100000;
 
         while(msg_nums>0) {
             String msg = getRandomMessage();
             System.out.println(msg);
-            //produce
+            Thread.sleep(1000);
             ProducerRecord<String,String> producerRecord = new ProducerRecord<String,String>(topic_name,msg);
             producer.send(producerRecord);
             msg_nums--;
@@ -47,18 +47,13 @@ public class KafkaProducer320 {
 
         List<String> dim1list = new ArrayList<String>();
         dim1list.add("dim1-a");
-        dim1list.add("dim1-b");
-        dim1list.add("dim1-c");
+
 
         List<String> dim2list = new ArrayList<String>();
         dim2list.add("dim2-a");
-        dim2list.add("dim2-b");
-        dim2list.add("dim2-c");
 
         List<String> dim3list = new ArrayList<String>();
         dim3list.add("dim3-a");
-        dim3list.add("dim3-b");
-        dim3list.add("dim3-c");
 
         Random random = new Random();
 
@@ -67,7 +62,7 @@ public class KafkaProducer320 {
         exampleEventLogEntity.setDims2(dim2list.get(random.nextInt(dim2list.size())));
         exampleEventLogEntity.setDims3(dim3list.get(random.nextInt(dim3list.size())));
         exampleEventLogEntity.setTarget1(random.nextInt(100));
-        exampleEventLogEntity.setEventTime(System.currentTimeMillis());
+        exampleEventLogEntity.setEventTime((long) (System.currentTimeMillis()));
 
         return exampleEventLogEntity.toString();
 

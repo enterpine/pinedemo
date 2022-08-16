@@ -10,7 +10,9 @@ bin/kafka-console-producer.sh --broker-list localhost:9092 --topic test
 #Hello world！
 #Hello Kafka！
 #comsume msg
-bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic test --from-beginning
+bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic test --from-beginning --formatter 'kafka.coordinator.group.GroupMetadataManager$OffsetsMessageFormatter'
 #Hello world!
 #Hello Kafka!
 
+
+kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic __consumer_offsets --from-beginning --formatter 'kafka.coordinator.group.GroupMetadataManager$OffsetsMessageFormatter'
