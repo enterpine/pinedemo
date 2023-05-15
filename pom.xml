@@ -11,6 +11,8 @@
     <modules>
         <module>flink15</module>
         <module>datasource</module>
+        <module>sparkdemo</module>
+        <module>leetcode</module>
     </modules>
 
     <properties>
